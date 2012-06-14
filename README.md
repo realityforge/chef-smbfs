@@ -38,7 +38,8 @@ The `smbfs_mount` resource helps define a mount for a cifs share.
 - password: The password. Must be present iff username is present. Defaults to nil.
 - option: Arbitrary key value pairs passed to mount.
 
-    # Example of how to mount
+The simplest example for mounting a share;
+
     smbfs_mount '/mnt' do
       cifs_path '//san01.example.org/myshare$/Some/Path'
       username 'MyUser',
