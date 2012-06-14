@@ -55,4 +55,6 @@ action :run do
     options options.join(',') unless options.empty?
     action [:mount, :enable]
   end
+
+  new_resource.updated_by_last_action(true)
 end
