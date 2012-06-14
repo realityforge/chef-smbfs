@@ -14,4 +14,4 @@
 # limitations under the License.
 #
 
-default[:smbfs][:mounts] = Mash.new
+default['smbfs']['mounts'] = Mash.new
