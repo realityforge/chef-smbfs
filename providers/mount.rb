@@ -44,7 +44,7 @@ action :run do
       if value
         options << "#{key}=#{value}"
       else
-        options << "#{key}"
+        options << key.to_s
       end
     end
   end
