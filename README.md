@@ -6,15 +6,13 @@ A recipe that installs smbfs on linux hosts. It also includes a recipe for addin
 Example for mounting a share
 ----------------------------
 
-    node[:smbfs][:mounts]["/mnt"] =
+    node['smbfs']['mounts']['/mnt'] =
       {
-        :share => "AppData",
-        :path => "IRIS/Subdir",
-        "username" => "MyUser",
-        "password" => "MyPass",
-        :options =>
+        'cifs_path' => '//san01.example.org/myshare$/Some/Path',
+        'username' => 'MyUser',
+        'password' => 'MyPass',
+        'options' =>
           {
-            "rw" => nil
+            'rw' => nil
           }
       }
-
