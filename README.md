@@ -1,7 +1,7 @@
 Description
 ===========
 
-[![Build Status](https://secure.travis-ci.org/realityforge-cookbooks/smbfs.png?branch=master)](http://travis-ci.org/realityforge/-cookbooks/smbfs)
+[![Build Status](https://secure.travis-ci.org/realityforge-cookbooks/smbfs.png?branch=master)](http://travis-ci.org/realityforge-cookbooks/smbfs)
 
 A recipe that installs smbfs on linux hosts. It also includes a resource for mounting cifs shares and an attribute driven recipe managing smbfs mounts.
 
