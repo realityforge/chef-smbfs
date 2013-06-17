@@ -49,6 +49,8 @@ action :run do
     end
   end
 
+  ## TODO: mount is not idempotently updating the /etc/fstab
+  ## TODO .. use fstab.d?
   mount new_resource.path do
     device new_resource.cifs_path
     fstype "cifs"
