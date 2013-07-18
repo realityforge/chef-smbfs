@@ -49,13 +49,30 @@ action :run do
     end
   end
 
-  ## TODO: mount is not idempotently updating the /etc/fstab
-  ## TODO .. use fstab.d?
+  
+  # Need to Unmount the folder first so that we can check it exists...
   mount new_resource.path do
     device new_resource.cifs_path
     fstype "cifs"
     options options.join(',') unless options.empty?
-    action [:mount, :enable]
+    action [:umount]
+  end
+
+  # Check that the folder exists (needs to be unmounted first for some strange reason)
+  directory new_resource.path do
+    owner "root"
+    group "root"
+    mode 0600
+    recursive false
+  end
+
+  # Finaly mount the folder
+  mount new_resource.path do
+    device new_resource.cifs_path
+    fstype "cifs"
+    options options.join(',') unless options.empty?
+    # This order works, adds to fstab first then mounts it
+    action [:enable, :mount]
   end
 
   new_resource.updated_by_last_action(true)
