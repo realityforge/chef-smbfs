@@ -50,23 +50,17 @@ action :run do
   end
 
   
-  # Need to Unmount the folder first so that we can check it exists...
-  mount new_resource.path do
-    device new_resource.cifs_path
-    fstype "cifs"
-    options options.join(',') unless options.empty?
-    action [:umount]
-  end
-
-  # Check that the folder exists (needs to be unmounted first for some strange reason)
+ # Create the directory if it does not exist.
   directory new_resource.path do
-    owner "root"
-    group "root"
-    mode 0600
+    owner new_resource.dir_owner
+    group new_resource.dir_group
+    mode new_resource.dir_mode
     recursive false
+    action [:create]
+    not_if { ::File.exists?(new_resource.path)}
   end
 
-  # Finaly mount the folder
+  # Finally mount the folder
   mount new_resource.path do
     device new_resource.cifs_path
     fstype "cifs"
