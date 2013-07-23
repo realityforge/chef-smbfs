@@ -1,3 +1,8 @@
+## v0.2.1:
+
+* Added the ability to create the mount folder
+* Adds the mount to fstab
+
 ## v0.2.0:
 
 * Improve the documentation.

@@ -21,6 +21,9 @@ node['smbfs']['mounts'].each_pair do |path, config|
     cifs_path config['cifs_path']
     username config['username'] if config['username']
     password config['password'] if config['password']
+    dir_owner config['dir_owner'] if config['dir_owner']
+    dir_group config['dir_group'] if config['dir_group']
+    dir_mode config['dir_mode'] if config['dir_mode']    
     options config['options'] if config['options']
   end
 end

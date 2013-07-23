@@ -49,13 +49,24 @@ action :run do
     end
   end
 
-  ## TODO: mount is not idempotently updating the /etc/fstab
-  ## TODO .. use fstab.d?
+  
+ # Create the directory if it does not exist.
+  directory new_resource.path do
+    owner new_resource.dir_owner
+    group new_resource.dir_group
+    mode new_resource.dir_mode
+    recursive false
+    action [:create]
+    not_if { ::File.exists?(new_resource.path)}
+  end
+
+  # Finally mount the folder
   mount new_resource.path do
     device new_resource.cifs_path
     fstype "cifs"
     options options.join(',') unless options.empty?
-    action [:mount, :enable]
+    # This order works, adds to fstab first then mounts it
+    action [:enable, :mount]
   end
 
   new_resource.updated_by_last_action(true)
