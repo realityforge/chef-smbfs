@@ -49,14 +49,6 @@ action :run do
     end
   end
 
-  
-  # Need to Unmount the folder first so that we can check it exists...
-  mount new_resource.path do
-    device new_resource.cifs_path
-    fstype "cifs"
-    options options.join(',') unless options.empty?
-    action [:umount]
-  end
 
   # Check that the folder exists (needs to be unmounted first for some strange reason)
   directory new_resource.path do
@@ -66,7 +58,7 @@ action :run do
     recursive false
   end
 
-  # Finaly mount the folder
+  # Mount the folder
   mount new_resource.path do
     device new_resource.cifs_path
     fstype "cifs"
