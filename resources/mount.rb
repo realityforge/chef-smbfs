@@ -22,7 +22,4 @@ attribute :username, :kind_of => String, :default => nil
 attribute :password, :kind_of => String, :default => nil
 attribute :options, :kind_of => Hash, :default => nil
 
-def initialize( *args )
-  super
-  @action = :run
-end
+default_action :add
