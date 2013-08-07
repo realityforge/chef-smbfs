@@ -22,4 +22,4 @@ attribute :username, :kind_of => String, :default => nil
 attribute :password, :kind_of => String, :default => nil
 attribute :options, :kind_of => Hash, :default => nil
 
-default_action :add
+default_action :run
