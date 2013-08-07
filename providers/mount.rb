@@ -49,12 +49,16 @@ action :run do
     end
   end
 
+  o = new_resource.options || {}
+  mode = o['dir_mode'] || '0755'
+  owner = o['uid'] || 'root'
+  group = o['gid'] || 'root'
 
   # Check that the folder exists (needs to be unmounted first for some strange reason)
   directory new_resource.path do
-    owner "root"
-    group "root"
-    mode 0600
+    owner owner
+    group group
+    mode mode
     recursive false
   end
 
