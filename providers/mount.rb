@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+use_inline_resources
+
 action :run do
   options = []
 
@@ -70,6 +72,4 @@ action :run do
     # This order works, adds to fstab first then mounts it
     action [:enable, :mount]
   end
-
-  new_resource.updated_by_last_action(true)
 end
