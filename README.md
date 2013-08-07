@@ -59,7 +59,12 @@ The simplest example for mounting a share;
         'password' => 'MyPass',
         'options' =>
           {
-            'rw' => nil
+            'rw' => nil,
+            'dir_mode' => '0700',
+            'file_mode' => '0600',
+            'noserverino' => nil,
+            'uid' => 'myuser',
+            'gid' => 'mygroup'
           }
       }
 
