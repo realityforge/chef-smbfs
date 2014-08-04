@@ -1,4 +1,4 @@
-## v0.2.1:
+## v0.4.0:
 
 * Added the ability to create the mount folder
 * Adds the mount to fstab
