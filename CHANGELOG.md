@@ -1,3 +1,5 @@
+## v0.6.0:
+
 ## v0.4.0:
 
 * Added the ability to create the mount folder
