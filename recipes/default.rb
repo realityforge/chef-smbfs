@@ -14,6 +14,6 @@
 # limitations under the License.
 #
 
-package "smbfs" do
+package "cifs-utils" do
   action :install
 end
