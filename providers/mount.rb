@@ -23,17 +23,17 @@ action :run do
     password_file = "/etc/smbfs#{new_resource.path}/.credentials"
 
     directory ::File.dirname(password_file) do
-      owner "root"
-      group "root"
-      mode 0600
+      owner 'root'
+      group 'root'
+      mode '0600'
       recursive true
       action :create
     end
 
     file password_file do
-      owner "root"
-      group "root"
-      mode 0600
+      owner 'root'
+      group 'root'
+      mode '0600'
       content "username=#{new_resource.username}\npassword=#{new_resource.password}\n"
       action :create
     end
@@ -67,7 +67,7 @@ action :run do
   # Mount the folder
   mount new_resource.path do
     device new_resource.cifs_path
-    fstype "cifs"
+    fstype 'cifs'
     options options.join(',') unless options.empty?
     # This order works, adds to fstab first then mounts it
     action [:enable, :mount]
