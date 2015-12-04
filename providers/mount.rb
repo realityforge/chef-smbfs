@@ -62,7 +62,7 @@ action :run do
     group group
     mode mode
     recursive false
-  end
+  end unless ::File.exist?(new_resource.path)
 
   # Mount the folder
   mount new_resource.path do
