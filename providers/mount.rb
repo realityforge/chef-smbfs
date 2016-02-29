@@ -35,6 +35,7 @@ action :run do
       group 'root'
       mode '0600'
       content "username=#{new_resource.username}\npassword=#{new_resource.password}\n"
+      sensitive true
       action :create
     end
 
